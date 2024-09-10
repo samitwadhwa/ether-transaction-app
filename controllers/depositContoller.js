@@ -1,28 +1,28 @@
 const axios = require("axios");
-const Deposit = require("../model/deposit"); // Adjust path as necessary
+const Deposit = require("../model/depositSchema");
 
-// Helper function to get block timestamp
-const getBlockTimestamp = async (blockNumber) => {
-  const url = process.env.ETH_RPC_URL; // URL for Ethereum RPC
+// Helper function to get block timestamps
+const getBlockTime = async (blockNumber) => {
+  const url = process.env.ETH_RPC_URL;
 
   try {
     const response = await axios.post(url, {
       jsonrpc: "2.0",
       id: 1,
       method: "eth_getBlockByNumber",
-      params: [blockNumber, false], // false for not including full transactions
+      params: [blockNumber, false], 
     });
 
-    const block = response.data.result;
-    return block ? parseInt(block.timestamp, 16) * 1000 : null; // Convert hex to milliseconds
+    const blockData = response.data.result;
+    return blockData ? parseInt(blockData.timestamp, 16) * 1000 : null; 
   } catch (error) {
-    console.error("Error fetching block timestamp:", error);
+    console.error("Error in fetching block data: ", error);
     return null;
   }
 };
 
 // Helper function to send Telegram notification
-const sendTelegramNotification = async (message) => {
+const sendTelegramNotifications = async (message) => {
   const botToken = process.env.TELEGRAM_NOTIFICATIONS_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_NOTIFICATIONS_CHAT_ID;
   const telegramUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
@@ -33,12 +33,12 @@ const sendTelegramNotification = async (message) => {
       text: message,
     });
   } catch (error) {
-    console.error("Error sending Telegram notification:", error);
+    console.error("Error in sending Telegram notifications: ", error);
   }
 };
 
 // Controller function to handle deposit data
-const handleDepositData = async (req, res) => {
+const handleDataOnDeposit = async (req, res) => {
   try {
     const { event } = req.body;
 
@@ -48,17 +48,17 @@ const handleDepositData = async (req, res) => {
     }
 
     const activities = event.activity;
-    console.log("Received activity data:", activities);
+    console.log("Received activity data: ", activities);
 
     for (const activity of activities) {
-      console.log("Processing deposit data:", activity);
+      console.log("Processing deposit data: ", activity);
 
       // Convert blockNum from hex to number
       const blockNumberHex = activity.blockNum;
       const blockNumber = `0x${parseInt(blockNumberHex, 16).toString(16)}`;
 
       // Get block timestamp
-      const blockTimestamp = await getBlockTimestamp(blockNumber);
+      const blockTimestamp = await getBlockTime(blockNumber);
 
       const depositData = {
         blockNumber: parseInt(blockNumberHex, 16),
@@ -69,26 +69,25 @@ const handleDepositData = async (req, res) => {
         network: "sepolia",
       };
 
-      // Check if the transaction with the same hash already exists in the DB
-      const existingDeposit = await Deposit.findOne({ hash: depositData.hash });
+      // Check if the transaction with the same hash already exists in the DB --> No extra storage in Database
+      const existingDepositDataHash = await Deposit.findOne({ hash: depositData.hash });
 
-      if (existingDeposit) {
+      if (existingDepositDataHash) {
         console.log(
           `Deposit ${depositData.hash} already exists in the database, skipping.`
         );
-        continue; // Skip if deposit with same hash exists
+        continue; 
       }
 
-      // Create a new deposit document
+      
       const deposit = new Deposit(depositData);
 
-      // Save deposit data to MongoDB
       await deposit.save();
       console.log(`Deposit ${depositData.hash} saved to the database.`);
 
       // Send Telegram notification
       const message = `New deposit detected:\n\nHash: ${depositData.hash}\nBlock Number: ${depositData.blockNumber}\nFee: ${depositData.fee}\nTimestamp: ${depositData.blockTimestamp}`;
-      await sendTelegramNotification(message);
+      await sendTelegramNotifications(message);
     }
 
     // Respond with success
@@ -100,5 +99,5 @@ const handleDepositData = async (req, res) => {
 };
 
 module.exports = {
-  handleDepositData,
+  handleDataOnDeposit,
 };

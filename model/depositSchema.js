@@ -10,7 +10,7 @@ const depositSchema = new Schema({
         required: true
     },
     fee: {
-        type: String,  // Fee can be a string in case of large or precise numbers (e.g., in ETH)
+        type: String,  
         required: true
     },
     hash: {

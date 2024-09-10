@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { handleDepositData } = require('../controllers/depositContoller');
+const { handleDataOnDeposit } = require('../controllers/depositContoller');
 
-router.post('/deposit', handleDepositData);
+router.post('/deposit', handleDataOnDeposit);
 
 module.exports = router;

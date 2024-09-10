@@ -21,6 +21,20 @@ const getBlockTime = async (blockNumber) => {
   }
 };
 
+const Transaction = require('../model/depositSchema'); // Replace with your actual model
+
+// Handle GET request to fetch transactions
+const getTransactions = async (req, res) => {
+  try {
+    const transactions = await Transaction.find(); // Fetch all transactions
+    res.status(200).json(transactions);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching transactions', error });
+  }
+};
+
+
+
 // Helper function to send Telegram notification
 const sendTelegramNotifications = async (message) => {
   const botToken = process.env.TELEGRAM_NOTIFICATIONS_BOT_TOKEN;
@@ -100,4 +114,5 @@ const handleDataOnDeposit = async (req, res) => {
 
 module.exports = {
   handleDataOnDeposit,
+  getTransactions
 };

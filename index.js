@@ -1,6 +1,6 @@
 const express = require('express');
 require('dotenv').config();
-const depositRoutes = require('./routes/depositRoutes');
+const depositRoutes = require('./routes/depositTransactionRoute');
 
 const app = express();
 app.use(express.json());

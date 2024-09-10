@@ -6,7 +6,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 
 ---
 
-### Table of Contents
+## ⭐️ Table of Contents
 1. [Installation](#installation)
 2. [Features](#features)
 3. [Technologies Used](#technologies-used)
@@ -45,7 +45,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 4. **Grafana Integration**
     Visualizes transaction data using Grafana for real-time monitoring.
 
-# ⭐️ Technologies Used
+# 💻 Technologies Used
 
 1. **Node.js**
     Backend Server
@@ -98,5 +98,5 @@ After Deploying you can copy and paste the Deployed url into the Activity Webhoo
 
 Feel free to fork this project, open issues, or submit pull requests to contribute.
 
-### Thanks for Spending Time
+## 💫 Thanks for Spending Time
 

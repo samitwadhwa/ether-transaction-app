@@ -1,7 +1,7 @@
 # **Ethereum Deposit Tracker on Sepolia Testnet**
 
-
-### 🎯 Description
+🎯
+###  Description
 This project tracks Ethereum deposit transactions on the Sepolia testnet. It provides real-time alerts for each transaction via a telegram bot, fetches transaction details using the Etherscan API, and visualizes the transactions using Grafana.
 
 ---
@@ -18,8 +18,8 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 9. [License](#license)
 
 ---
-
-###⚙️ Installation
+⚙️
+### Installation
 
 1. **Clone the repository**:
    ```bash

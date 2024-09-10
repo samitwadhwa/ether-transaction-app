@@ -1,7 +1,7 @@
 # **Ethereum Deposit Tracker on Sepolia Testnet**
 
-🎯
-###  Description
+
+# 🎯 Description
 This project tracks Ethereum deposit transactions on the Sepolia testnet. It provides real-time alerts for each transaction via a telegram bot, fetches transaction details using the Etherscan API, and visualizes the transactions using Grafana.
 
 ---
@@ -18,8 +18,8 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 9. [License](#license)
 
 ---
-⚙️
-### Installation
+
+## ⚙️ Installation
 
 1. **Clone the repository**:
    ```bash
@@ -34,7 +34,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
     ETHERSCAN_API_KEY=your_etherscan_api_key
     BOT_API_KEY=your_bot_api_key and more like that
 
-###🎯 Features
+## 🎯 Features
 
 1. **Ethereum Transaction Tracker**
     Tracks Ethereum transactions on the Sepolia testnet.
@@ -45,7 +45,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 4. **Grafana Integration**
     Visualizes transaction data using Grafana for real-time monitoring.
 
-###⭐️ Technologies Used
+# ⭐️ Technologies Used
 
 1. **Node.js**
     Backend Server
@@ -60,14 +60,14 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 6. **Sepolia Testnet**
     Ethereum test network for sending/receiving transactions.
 
-###⚙️ Environment Setup
+# ⚙️ Environment Setup
 
 1. **Etherscan API Key**
     You'll need to get an API key from Etherscan.
 2. **Bot API Key**
     If you are using a bot for transaction alerts, ensure that you have a valid API key.
 
-###⭐️ Usage
+## ⭐️ Usage
 
 1. **Transaction Tracking**
     The application tracks incoming transactions on the Sepolia network and sends alerts for each new deposit.
@@ -76,7 +76,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 3. **Bot Alerts**
     A bot sends real-time alerts with transaction information for each deposit detected.
 
-###⚙️ Grafana Setup
+## ⚙️ Grafana Setup
 
 1. **Install Grafana**
     Follow the official Grafana installation guide for your system.
@@ -85,7 +85,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 3. **Visualize Transactions:**
     Configure Grafana to visualize Ethereum transaction data coming from your tracker.
 
-###🎯 To deploy your code to Render
+## 🎯 To deploy your code to Render
 
 1. Go to Render and signin.
 2. SigningIn with github is preferrable (so that you can add your repo over there).
@@ -94,7 +94,7 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 
 After Deploying you can copy and paste the Deployed url into the Activity Webhooks of Alchemy with contract address, so that on making a transaction you can recieve the bot messages , store thr transactions in your Db , and visualize the transactions..
 
-###👍  Contributing
+## 👍  Contributing
 
 Feel free to fork this project, open issues, or submit pull requests to contribute.
 

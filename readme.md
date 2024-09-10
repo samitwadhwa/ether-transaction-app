@@ -1,5 +1,6 @@
 # **Ethereum Deposit Tracker on Sepolia Testnet**
 
+
 ### Description
 This project tracks Ethereum deposit transactions on the Sepolia testnet. It provides real-time alerts for each transaction via a telegram bot, fetches transaction details using the Etherscan API, and visualizes the transactions using Grafana.
 
@@ -84,7 +85,18 @@ This project tracks Ethereum deposit transactions on the Sepolia testnet. It pro
 3. **Visualize Transactions:**
     Configure Grafana to visualize Ethereum transaction data coming from your tracker.
 
+### To deploy your code to Render
+
+1. Go to Render and signin.
+2. SigningIn with github is preferrable (so that you can add your repo over there).
+3. Create a new web service, Add your details related to project and environment variables used.
+4. click on Connect button to start deploy and that's it.
+
+After Deploying you can copy and paste the Deployed url into the Activity Webhooks of Alchemy with contract address, so that on making a transaction you can recieve the bot messages , store thr transactions in your Db , and visualize the transactions..
+
 ### Contributing
 
 Feel free to fork this project, open issues, or submit pull requests to contribute.
+
+### Thanks for Spending Time
 
